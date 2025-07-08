@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nested drop down</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #333;
+        }
+
+        .dropdown {
+            display: flex;
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        .dropdown-item {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .dropdown-item a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        .dropdown-item a:hover {
+            background-color: #555;
+        }
+
+        .dropdown-item>ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            background-color: #333;
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        .dropdown-item:hover>ul {
+            width: 200px;
+            display: block;
+        }
+
+
+        .submenu li a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li a:hover {
+            background-color: #555;
+        }
+
+        .submenu li ul {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            background-color: #333;
+            list-style-type: none;
+            padding: 10px;
+        }
+        @media (max-width:768px) {
+            .submenu li ul{
+                position:static;
+                top: auto;
+                left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="dropdown">
+            <li class="dropdown-item">
+                <a href="#">home</a>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="#">home-1</a>
+                    </li>
+                    <li>
+                        <a href="#">home-2</a>
+                    </li>
+                    <li>
+                        <a href="#">home-3</a>
+                    </li>
+                    <li>
+                        <a href="#">home-4</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown-item">
+                <a href="#">about</a>
+                <ul class="submenu">
+                    <li class="dropdown-item">
+                        <a href="#">about</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="#">about-2</a>
+                        <ul class="submenu">
+                            <li class="dropdown-item">
+                                <a href="#">about-2-1</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="#">about-2-2</a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="#">about-2-2-1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">about-2-2-2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">about-2-2-3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="#">about-2-3</a>
+                                <ul class="submenu">
+                                    <li class="dropdown-item">
+                                        <a href="#">about-2-1</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">about-2-2</a>
+                                        <ul class="submenu">
+                                            <li>
+                                                <a href="#">about-2-2-1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">about-2-2-2</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">about-2-2-3</a>
+                                                <ul class="submenu">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">about-2-1</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">about-2-2</a>
+                                                        <ul class="submenu">
+                                                            <li>
+                                                                <a href="#">about-2-2-1</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">about-2-2-2</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">about-2-2-3</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">about-2-3</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">about-2-3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="#">about-3</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="#">about-4</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown-item">
+                <a href="#">contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

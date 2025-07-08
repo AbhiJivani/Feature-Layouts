@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagination</title>
+    <style>
+
+        .pagination button{
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .pagination button.active{
+            border:1px solid #ff8800;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="pagination-container"></div>
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        
+        const items = Array.from({length:101}, (_, i)=>`Item ${i + 1}`);
+        const itemCounter = 10;
+        let currentPage = 1;
+
+        function displayItems(page){
+            let start = (page - 1) * itemCounter;
+            let end = start + itemCounter;
+            let paginatedItems= items.slice(start,end);
+            
+            const itemContainer = document.querySelector('.pagination-container');
+            itemContainer.innerHTML = paginatedItems.map(item=>`<div> ${item} </div>`).join('');
+        }
+
+        function setPagination(){
+            let pageCout = Math.ceil(items.length/itemCounter);
+            let paginationElement = document.querySelector('#pagination');
+            paginationElement.innerHTML='';
+            for (let index = 1; index <= pageCout; index++) {
+                
+                let buttonItems = document.createElement('button');
+                buttonItems.textContent=index;
+                paginationElement.appendChild(buttonItems);
+                buttonItems.className=(index === currentPage)?'active':'';
+                
+                buttonItems.addEventListener('click',()=>{
+                    currentPage=index;
+                    displayItems(currentPage);
+                    setPagination();
+                });
+            }
+
+        }
+
+        displayItems(currentPage);
+        setPagination();
+        // const items = Array.from({lenght:100}, (_, i)=>`Item ${i + 1}`);
+        
+        // console.log(items);
+
+    </script>
+</body>
+</html>

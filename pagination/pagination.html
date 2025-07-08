@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Example</title>
+    <style>
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            color: #007bff;
+            border-radius: 4px;
+        }
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="item-container"></div>
+    <ul class="pagination" id="pagination"></ul>
+
+    <script>
+        const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`); // Sample data
+        const itemsPerPage = 10;
+        let currentPage = 1;
+
+        function displayItems(page) {
+            const start = (page - 1) * itemsPerPage;//0
+            const end = start + itemsPerPage;//10,
+            const paginatedItems = items.slice(start, end);
+            // console.log(paginatedItems)
+            const itemContainer = document.getElementById('item-container');
+            itemContainer.innerHTML = paginatedItems.map(item => `<div>${item}</div>`).join('');
+        }
+
+        function setupPagination() {
+            const pageCount = Math.ceil(items.length / itemsPerPage);
+            const paginationElement = document.getElementById('pagination');
+            paginationElement.innerHTML = '';
+
+            for (let i = 1; i <= pageCount; i++) {
+                const pageItem = document.createElement('li');
+                const pageLink = document.createElement('a');
+                pageLink.href = '#';
+                pageLink.textContent = i;
+                pageLink.className = (i === currentPage) ? 'active' : '';
+
+                
+                pageItem.appendChild(pageLink);
+                paginationElement.appendChild(pageItem);
+                pageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    displayItems(currentPage);
+                    setupPagination();
+                });
+            }
+        }
+
+        // Initial display
+        displayItems(currentPage);
+        setupPagination();
+    </script>
+
+</body>
+</html>
